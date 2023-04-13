@@ -1,0 +1,132 @@
+[W 2023-04-13 03:56:49.117 ServerApp] notebook_dir is deprecated, use root_dir
+[W 2023-04-13 03:56:49.117 ServerApp] ServerApp.token config is deprecated in 2.0. Use IdentityProvider.token.
+[I 2023-04-13 03:56:49.123 ServerApp] Package jupyterlab took 0.0000s to import
+[I 2023-04-13 03:56:50.225 ServerApp] Package domino_code_assist.jupyter.server_extension took 1.1020s to import
+[W 2023-04-13 03:56:50.225 ServerApp] A `_jupyter_server_extension_points` function was not found in domino_code_assist.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-04-13 03:56:50.228 ServerApp] Package jupyter_server_fileid took 0.0023s to import
+[I 2023-04-13 03:56:50.230 ServerApp] Package jupyter_server_mathjax took 0.0009s to import
+[I 2023-04-13 03:56:50.436 ServerApp] Package jupyter_server_proxy took 0.2061s to import
+[I 2023-04-13 03:56:50.439 ServerApp] Package jupyter_server_terminals took 0.0022s to import
+[I 2023-04-13 03:56:50.461 ServerApp] Package jupyter_server_ydoc took 0.0215s to import
+[I 2023-04-13 03:56:50.476 ServerApp] Package jupyterlab_git took 0.0147s to import
+[I 2023-04-13 03:56:50.476 ServerApp] Package nbclassic took 0.0000s to import
+[W 2023-04-13 03:56:50.477 ServerApp] A `_jupyter_server_extension_points` function was not found in nbclassic. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-04-13 03:56:50.478 ServerApp] Package nbdime took 0.0000s to import
+[I 2023-04-13 03:56:50.478 ServerApp] Package notebook_shim took 0.0000s to import
+[W 2023-04-13 03:56:50.478 ServerApp] A `_jupyter_server_extension_points` function was not found in notebook_shim. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-04-13 03:56:50.488 ServerApp] Package solara.server.jupyter.server_extension took 0.0089s to import
+[W 2023-04-13 03:56:50.488 ServerApp] A `_jupyter_server_extension_points` function was not found in solara.server.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-04-13 03:56:50.488 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully linked.
+[I 2023-04-13 03:56:50.492 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2023-04-13 03:56:50.495 ServerApp] jupyter_server_mathjax | extension was successfully linked.
+[I 2023-04-13 03:56:50.496 ServerApp] jupyter_server_proxy | extension was successfully linked.
+[I 2023-04-13 03:56:50.499 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2023-04-13 03:56:50.502 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[W 2023-04-13 03:56:50.504 LabApp] 'iopub_data_rate_limit' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2023-04-13 03:56:50.504 LabApp] 'disable_check_xsrf' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2023-04-13 03:56:50.506 ServerApp] ServerApp.iopub_data_rate_limit config is deprecated in 2.0. Use ZMQChannelsWebsocketConnection.iopub_data_rate_limit.
+[I 2023-04-13 03:56:50.507 ServerApp] jupyterlab | extension was successfully linked.
+[I 2023-04-13 03:56:50.507 ServerApp] jupyterlab_git | extension was successfully linked.
+[I 2023-04-13 03:56:50.510 ServerApp] nbclassic | extension was successfully linked.
+[I 2023-04-13 03:56:50.510 ServerApp] nbdime | extension was successfully linked.
+[I 2023-04-13 03:56:50.511 ServerApp] Writing Jupyter server cookie secret to /home/ubuntu/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2023-04-13 03:56:50.513 ServerApp] notebook_shim | extension was successfully linked.
+[I 2023-04-13 03:56:50.514 ServerApp] solara.server.jupyter.server_extension | extension was successfully linked.
+[W 2023-04-13 03:56:50.536 ServerApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
+[I 2023-04-13 03:56:50.537 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2023-04-13 03:56:50.537 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully loaded.
+[I 2023-04-13 03:56:50.537 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2023-04-13 03:56:50.538 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /
+[I 2023-04-13 03:56:50.538 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/ubuntu/.local/share/jupyter/file_id_manager.db
+[I 2023-04-13 03:56:50.538 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2023-04-13 03:56:50.538 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2023-04-13 03:56:50.545 FileIdExtension] Attached event listeners.
+[I 2023-04-13 03:56:50.545 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2023-04-13 03:56:50.546 ServerApp] jupyter_server_mathjax | extension was successfully loaded.
+[I 2023-04-13 03:56:50.558 ServerApp] jupyter_server_proxy | extension was successfully loaded.
+[I 2023-04-13 03:56:50.559 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2023-04-13 03:56:50.560 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2023-04-13 03:56:50.560 LabApp] JupyterLab extension loaded from /opt/conda/lib/python3.9/site-packages/jupyterlab
+[I 2023-04-13 03:56:50.560 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 2023-04-13 03:56:50.565 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2023-04-13 03:56:50.573 ServerApp] jupyterlab_git | extension was successfully loaded.
+[I 2023-04-13 03:56:50.576 ServerApp] nbclassic | extension was successfully loaded.
+[I 2023-04-13 03:56:50.633 ServerApp] nbdime | extension was successfully loaded.
+[I 2023-04-13 03:56:50.633 ServerApp] solara.server.jupyter.server_extension | extension was successfully loaded.
+[I 2023-04-13 03:56:50.634 ServerApp] Serving notebooks from local directory: /
+[I 2023-04-13 03:56:50.634 ServerApp] Jupyter Server 2.3.0 is running at:
+[I 2023-04-13 03:56:50.634 ServerApp] http://run-64377d5e6ffa257cc9570f8d-5mcfw:8888/dave_heinicke/PowerGenTest/notebookSession/64377d5e6ffa257cc9570f8d/lab/tree/mnt
+[I 2023-04-13 03:56:50.634 ServerApp]     http://127.0.0.1:8888/dave_heinicke/PowerGenTest/notebookSession/64377d5e6ffa257cc9570f8d/lab/tree/mnt
+[I 2023-04-13 03:56:50.634 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2023-04-13 03:56:52.198 ServerApp] 302 GET /dave_heinicke/PowerGenTest/notebookSession/64377d5e6ffa257cc9570f8d/ (@10.0.42.157) 0.77ms
+[I 2023-04-13 03:56:52.275 LabApp] Generating new user for token-authenticated request: c377eb3257474bdca9cfd252e27f8ada
+[I 2023-04-13 03:56:52.384 ServerApp] 302 GET /dave_heinicke/PowerGenTest/notebookSession/64377d5e6ffa257cc9570f8d/ (@10.0.42.157) 0.48ms
+[I 2023-04-13 03:57:00.518 LabApp] Build is up to date
+[I 2023-04-13 03:57:15.460 ServerApp] Writing notebook-signing key to /home/ubuntu/.local/share/jupyter/notebook_secret
+[W 2023-04-13 03:57:15.460 ServerApp] Notebook mnt/DCA_Tutorial_Template.ipynb is not trusted
+[I 2023-04-13 03:57:15.846 ServerApp] Kernel started: 7e08e5d7-0695-4894-8dc3-aa00899dcad2
+[I 2023-04-13 03:57:16.533 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 03:57:16.638 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:07b1d3a0-50fa-4a43-a3f7-6efaa7a6f7bd
+[I 2023-04-13 03:57:16.716 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 03:57:17.151 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 03:59:15.763 ServerApp] Saving file at /mnt/DCA_Tutorial_Template.ipynb
+[I 2023-04-13 04:09:32.732 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:09:33.006 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:09:33.249 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:14:37.228 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:14:37.537 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:14:38.029 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:19:42.610 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:19:42.810 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:19:42.810 ServerApp] Restoring connection for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:19:43.056 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:24:45.428 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:24:45.679 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:24:45.913 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[W 2023-04-13 04:26:16.450 ServerApp] Notebook mnt/DCA_app.ipynb is not trusted
+[I 2023-04-13 04:26:16.770 ServerApp] Kernel started: 072b66de-391b-428c-827b-b7c9efce00d7
+[I 2023-04-13 04:26:17.446 ServerApp] Connecting to kernel 072b66de-391b-428c-827b-b7c9efce00d7.
+[I 2023-04-13 04:27:03.351 ServerApp] Saving file at /mnt/DCA_app.ipynb
+[W 2023-04-13 04:27:03.351 ServerApp] Notebook mnt/DCA_app.ipynb is not trusted
+[I 2023-04-13 04:29:03.575 ServerApp] Saving file at /mnt/DCA_app.ipynb
+[I 2023-04-13 04:33:02.704 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:33:03.001 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:33:03.244 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:35:03.791 ServerApp] Saving file at /mnt/DCA_app.ipynb
+[I 2023-04-13 04:35:57.459 ServerApp] Saving file at /mnt/DCA_app.ipynb
+[I 2023-04-13 04:38:04.506 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:38:04.959 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:38:05.197 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:43:09.214 ServerApp] Starting buffering for 7e08e5d7-0695-4894-8dc3-aa00899dcad2:87731849-3d29-4780-ad05-b6bbed21d13f
+[I 2023-04-13 04:43:09.486 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:43:09.720 ServerApp] Connecting to kernel 7e08e5d7-0695-4894-8dc3-aa00899dcad2.
+[I 2023-04-13 04:43:49.060 ServerApp] Saving file at /mnt/DCA_app.ipynb
+[I 2023-04-13 04:44:04.329 ServerApp] Creating new file in /mnt
+[I 2023-04-13 04:46:04.639 ServerApp] Saving file at /mnt/README.md
+[I 2023-04-13 04:46:07.146 ServerApp] Saving file at /mnt/README.md
+[I 2023-04-13 04:46:28.186 ServerApp] Creating new directory in /mnt
+[I 2023-04-13 04:46:44.999 ServerApp] Uploading file to /mnt/readme_images/snippets_repo_example.png
+[I 2023-04-13 04:46:45.242 ServerApp] Uploading file to /mnt/readme_images/view_app.png
+[I 2023-04-13 04:46:45.401 ServerApp] Uploading file to /mnt/readme_images/schedule_2.png
+[I 2023-04-13 04:46:45.474 ServerApp] Uploading file to /mnt/readme_images/save_snippet.png
+[I 2023-04-13 04:46:45.940 ServerApp] Uploading file to /mnt/readme_images/toggle_on.png
+[I 2023-04-13 04:46:46.137 ServerApp] Uploading file to /mnt/readme_images/schedule_1.png
+[I 2023-04-13 04:46:46.303 ServerApp] Uploading file to /mnt/readme_images/load_data.png
+[I 2023-04-13 04:46:46.333 ServerApp] Uploading file to /mnt/readme_images/manual_job.png
+[I 2023-04-13 04:46:46.757 ServerApp] Uploading file to /mnt/readme_images/filter_nan_not_equal.png
+[I 2023-04-13 04:46:46.882 ServerApp] Uploading file to /mnt/readme_images/snippet_repos.png
+[I 2023-04-13 04:46:47.304 ServerApp] Uploading file to /mnt/readme_images/enable_snippet.png
+[I 2023-04-13 04:46:47.444 ServerApp] Uploading file to /mnt/readme_images/drop_null_example.png
+[I 2023-04-13 04:46:47.523 ServerApp] Uploading file to /mnt/readme_images/new_workspace.png
+[I 2023-04-13 04:46:47.569 ServerApp] Uploading file to /mnt/readme_images/filer_nan.png
+[I 2023-04-13 04:46:47.585 ServerApp] Uploading file to /mnt/readme_images/show_code.png
+[I 2023-04-13 04:46:48.447 ServerApp] Uploading file to /mnt/readme_images/import_stack.png
+[I 2023-04-13 04:46:48.559 ServerApp] Uploading file to /mnt/readme_images/area_plot.png
+[I 2023-04-13 04:46:48.621 ServerApp] Uploading file to /mnt/readme_images/area_plot_by_source.png
+[I 2023-04-13 04:46:48.727 ServerApp] Uploading file to /mnt/readme_images/add_git_repo.png
+[I 2023-04-13 04:46:49.026 ServerApp] Uploading file to /mnt/readme_images/DCA-icon.png
+[I 2023-04-13 04:46:49.125 ServerApp] Uploading file to /mnt/readme_images/default_env.png
+[I 2023-04-13 04:46:49.547 ServerApp] Uploading file to /mnt/readme_images/DCA_menu_load_data.png
+[I 2023-04-13 04:46:49.737 ServerApp] Uploading file to /mnt/readme_images/DCA_init.png
+[I 2023-04-13 04:46:49.905 ServerApp] Uploading file to /mnt/readme_images/R_Init.png
+[I 2023-04-13 04:46:50.116 ServerApp] Uploading file to /mnt/readme_images/week_plot.png
