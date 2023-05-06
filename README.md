@@ -325,7 +325,7 @@ What if we wanted to try some different parameter combinations to our model so w
 We will also want to schedule this retraining to run on a regular basis as our remote data will be updated regularly by other processes. Domino has a **Scheduled Job** capability for that.  
 
 
-### 6.1 Domino Jobs 
+### 6.1 Domino Jobs TODO
 
 To get a sense how Domino Jobs work, first take a look at the Python script `pull_daily_data.py` in your project files. This is a script that pulls data from BMRS’s website, using an optional user-specified start and end date. It cleans up the raw data, then appends it to the generation history in the Project’s Domino Dataset.
 
