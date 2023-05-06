@@ -1,113 +1,65 @@
-[W 2023-05-06 12:48:23.214 ServerApp] notebook_dir is deprecated, use root_dir
-[W 2023-05-06 12:48:23.214 ServerApp] ServerApp.token config is deprecated in 2.0. Use IdentityProvider.token.
-[I 2023-05-06 12:48:23.219 ServerApp] Package jupyterlab took 0.0000s to import
-[I 2023-05-06 12:48:24.315 ServerApp] Package domino_code_assist.jupyter.server_extension took 1.0949s to import
-[W 2023-05-06 12:48:24.315 ServerApp] A `_jupyter_server_extension_points` function was not found in domino_code_assist.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
-[I 2023-05-06 12:48:24.317 ServerApp] Package jupyter_server_fileid took 0.0023s to import
-[I 2023-05-06 12:48:24.319 ServerApp] Package jupyter_server_mathjax took 0.0009s to import
-[I 2023-05-06 12:48:24.517 ServerApp] Package jupyter_server_proxy took 0.1983s to import
-[I 2023-05-06 12:48:24.520 ServerApp] Package jupyter_server_terminals took 0.0022s to import
-[I 2023-05-06 12:48:24.542 ServerApp] Package jupyter_server_ydoc took 0.0220s to import
-[I 2023-05-06 12:48:24.557 ServerApp] Package jupyterlab_git took 0.0142s to import
-[I 2023-05-06 12:48:24.557 ServerApp] Package nbclassic took 0.0000s to import
-[W 2023-05-06 12:48:24.559 ServerApp] A `_jupyter_server_extension_points` function was not found in nbclassic. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
-[I 2023-05-06 12:48:24.559 ServerApp] Package nbdime took 0.0000s to import
-[I 2023-05-06 12:48:24.559 ServerApp] Package notebook_shim took 0.0000s to import
-[W 2023-05-06 12:48:24.559 ServerApp] A `_jupyter_server_extension_points` function was not found in notebook_shim. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
-[I 2023-05-06 12:48:24.574 ServerApp] Package solara.server.jupyter.server_extension took 0.0140s to import
-[W 2023-05-06 12:48:24.574 ServerApp] A `_jupyter_server_extension_points` function was not found in solara.server.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
-[I 2023-05-06 12:48:24.574 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully linked.
-[I 2023-05-06 12:48:24.578 ServerApp] jupyter_server_fileid | extension was successfully linked.
-[I 2023-05-06 12:48:24.582 ServerApp] jupyter_server_mathjax | extension was successfully linked.
-[I 2023-05-06 12:48:24.582 ServerApp] jupyter_server_proxy | extension was successfully linked.
-[I 2023-05-06 12:48:24.585 ServerApp] jupyter_server_terminals | extension was successfully linked.
-[I 2023-05-06 12:48:24.588 ServerApp] jupyter_server_ydoc | extension was successfully linked.
-[W 2023-05-06 12:48:24.590 LabApp] 'iopub_data_rate_limit' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
-[W 2023-05-06 12:48:24.590 LabApp] 'disable_check_xsrf' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
-[W 2023-05-06 12:48:24.593 ServerApp] ServerApp.iopub_data_rate_limit config is deprecated in 2.0. Use ZMQChannelsWebsocketConnection.iopub_data_rate_limit.
-[I 2023-05-06 12:48:24.593 ServerApp] jupyterlab | extension was successfully linked.
-[I 2023-05-06 12:48:24.593 ServerApp] jupyterlab_git | extension was successfully linked.
-[I 2023-05-06 12:48:24.596 ServerApp] nbclassic | extension was successfully linked.
-[I 2023-05-06 12:48:24.596 ServerApp] nbdime | extension was successfully linked.
-[I 2023-05-06 12:48:24.597 ServerApp] Writing Jupyter server cookie secret to /home/ubuntu/.local/share/jupyter/runtime/jupyter_cookie_secret
-[I 2023-05-06 12:48:24.600 ServerApp] notebook_shim | extension was successfully linked.
-[I 2023-05-06 12:48:24.600 ServerApp] solara.server.jupyter.server_extension | extension was successfully linked.
-[W 2023-05-06 12:48:24.622 ServerApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
-[I 2023-05-06 12:48:24.622 ServerApp] notebook_shim | extension was successfully loaded.
-[I 2023-05-06 12:48:24.623 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully loaded.
-[I 2023-05-06 12:48:24.623 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
-[I 2023-05-06 12:48:24.623 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /
-[I 2023-05-06 12:48:24.623 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/ubuntu/.local/share/jupyter/file_id_manager.db
-[I 2023-05-06 12:48:24.623 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
-[I 2023-05-06 12:48:24.624 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
-[I 2023-05-06 12:48:24.631 FileIdExtension] Attached event listeners.
-[I 2023-05-06 12:48:24.631 ServerApp] jupyter_server_fileid | extension was successfully loaded.
-[I 2023-05-06 12:48:24.632 ServerApp] jupyter_server_mathjax | extension was successfully loaded.
-[I 2023-05-06 12:48:24.644 ServerApp] jupyter_server_proxy | extension was successfully loaded.
-[I 2023-05-06 12:48:24.645 ServerApp] jupyter_server_terminals | extension was successfully loaded.
-[I 2023-05-06 12:48:24.646 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
-[I 2023-05-06 12:48:24.646 LabApp] JupyterLab extension loaded from /opt/conda/lib/python3.9/site-packages/jupyterlab
-[I 2023-05-06 12:48:24.646 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
-[I 2023-05-06 12:48:24.651 ServerApp] jupyterlab | extension was successfully loaded.
-[I 2023-05-06 12:48:24.659 ServerApp] jupyterlab_git | extension was successfully loaded.
-[I 2023-05-06 12:48:24.663 ServerApp] nbclassic | extension was successfully loaded.
-[I 2023-05-06 12:48:24.717 ServerApp] nbdime | extension was successfully loaded.
-[I 2023-05-06 12:48:24.718 ServerApp] solara.server.jupyter.server_extension | extension was successfully loaded.
-[I 2023-05-06 12:48:24.718 ServerApp] Serving notebooks from local directory: /
-[I 2023-05-06 12:48:24.718 ServerApp] Jupyter Server 2.3.0 is running at:
-[I 2023-05-06 12:48:24.718 ServerApp] http://run-64564bc38852c2400e7bf2d1-rv7rt:8888/bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/lab/tree/mnt
-[I 2023-05-06 12:48:24.718 ServerApp]     http://127.0.0.1:8888/bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/lab/tree/mnt
-[I 2023-05-06 12:48:24.719 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[I 2023-05-06 12:48:26.548 ServerApp] 302 GET /bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/ (@10.12.73.43) 0.74ms
-[I 2023-05-06 12:48:26.731 LabApp] Generating new user for token-authenticated request: e736e4a706974f8d99ed1e783d062457
-[I 2023-05-06 12:48:26.978 ServerApp] 302 GET /bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/ (@10.12.73.43) 0.47ms
-[I 2023-05-06 12:48:34.675 LabApp] Build is up to date
-[W 2023-05-06 12:49:25.507 ServerApp] delete /mnt/data
-[W 2023-05-06 12:49:25.508 ServerApp] Skipping trash for /mnt/data, on different device to home directory
-[I 2023-05-06 12:49:35.271 ServerApp] Writing notebook-signing key to /home/ubuntu/.local/share/jupyter/notebook_secret
-[W 2023-05-06 12:49:35.274 ServerApp] Notebook mnt/temp.ipynb is not trusted
-[I 2023-05-06 12:49:37.178 ServerApp] Kernel started: 51b97658-8809-4e2a-b9b8-f05a71dd850d
-[I 2023-05-06 12:49:38.002 ServerApp] Connecting to kernel 51b97658-8809-4e2a-b9b8-f05a71dd850d.
-[I 2023-05-06 12:49:38.398 ServerApp] Starting buffering for 51b97658-8809-4e2a-b9b8-f05a71dd850d:cdc00aa6-c58d-4e96-9344-07828cb06446
-[I 2023-05-06 12:49:38.468 ServerApp] Connecting to kernel 51b97658-8809-4e2a-b9b8-f05a71dd850d.
-[I 2023-05-06 12:49:38.947 ServerApp] Connecting to kernel 51b97658-8809-4e2a-b9b8-f05a71dd850d.
-[W 2023-05-06 12:49:48.443 ServerApp] Notebook mnt/Hybrid_Tutorial.ipynb is not trusted
-[I 2023-05-06 12:49:49.560 ServerApp] Kernel started: 839ec871-d85d-4fb6-83ae-ea8e6bb2f613
-[I 2023-05-06 12:49:50.217 ServerApp] Connecting to kernel 839ec871-d85d-4fb6-83ae-ea8e6bb2f613.
-[I 2023-05-06 12:50:13.962 ServerApp] Saving file at /mnt/Hybrid_Tutorial.ipynb
-[W 2023-05-06 12:50:13.962 ServerApp] Notebook mnt/Hybrid_Tutorial.ipynb is not trusted
-[I 2023-05-06 12:50:22.255 ServerApp] Kernel shutdown: 51b97658-8809-4e2a-b9b8-f05a71dd850d
-[W 2023-05-06 12:50:22.725 ServerApp] delete /mnt/temp.ipynb
-[W 2023-05-06 12:50:22.726 ServerApp] Skipping trash for /mnt/temp.ipynb, on different device to home directory
-[W 2023-05-06 12:50:44.786 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/README.md
-[W 2023-05-06 12:50:44.787 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/README.md, on different device to home directory
-[W 2023-05-06 12:50:48.978 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/pull_daily_data.py
-[W 2023-05-06 12:50:48.979 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/pull_daily_data.py, on different device to home directory
-[W 2023-05-06 12:50:52.611 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/dominostats.json
-[W 2023-05-06 12:50:52.612 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/dominostats.json, on different device to home directory
-[W 2023-05-06 12:50:56.821 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/domino.log
-[W 2023-05-06 12:50:56.822 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/domino.log, on different device to home directory
-[W 2023-05-06 12:51:01.659 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/DCA_Tutorial_Template.ipynb
-[W 2023-05-06 12:51:01.660 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/DCA_Tutorial_Template.ipynb, on different device to home directory
-[W 2023-05-06 12:51:05.229 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/DCA_app.ipynb
-[W 2023-05-06 12:51:05.230 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/DCA_app.ipynb, on different device to home directory
-[W 2023-05-06 12:51:08.767 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/app.sh
-[W 2023-05-06 12:51:08.769 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/app.sh, on different device to home directory
-[W 2023-05-06 12:51:12.121 ServerApp] delete /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations
-[W 2023-05-06 12:51:12.123 ServerApp] Skipping trash for /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations, on different device to home directory
-[W 2023-05-06 12:51:12.123 ServerApp] 400 DELETE /bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/api/contents/repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations?1683377472003 (10.12.73.43): Directory /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations not empty
-[W 2023-05-06 12:51:12.123 ServerApp] wrote error: 'Directory /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations not empty'
-    Traceback (most recent call last):
-      File "/opt/conda/lib/python3.9/site-packages/tornado/web.py", line 1713, in _execute
-        result = await result
-      File "/opt/conda/lib/python3.9/site-packages/jupyter_server/services/contents/handlers.py", line 282, in delete
-        await ensure_async(cm.delete(path))
-      File "/opt/conda/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 182, in ensure_async
-        result = await obj
-      File "/opt/conda/lib/python3.9/site-packages/jupyter_server/services/contents/manager.py", line 871, in delete
-        await self.delete_file(path)
-      File "/opt/conda/lib/python3.9/site-packages/jupyter_server/services/contents/filemanager.py", line 897, in delete_file
-        raise web.HTTPError(400, "Directory %s not empty" % os_path)
-    tornado.web.HTTPError: HTTP 400: Bad Request (Directory /repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations not empty)
-[W 2023-05-06 12:51:12.125 ServerApp] 400 DELETE /bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/api/contents/repos/Hybrid-Domino-Code-Assistant-Workshop-DFS/visualizations?1683377472003 (e736e4a706974f8d99ed1e783d062457@10.12.73.43) 4.17ms referer=https://demo2.dominodatalab.com/bryan_prosser/HybridWorkshop/notebookSession/64564bc38852c2400e7bf2d1/lab/tree/mnt/Hybrid_Tutorial.ipynb
-[I 2023-05-06 12:51:19.890 ServerApp] New terminal with automatic name: 1
+[W 2023-05-06 15:41:39.897 ServerApp] notebook_dir is deprecated, use root_dir
+[W 2023-05-06 15:41:39.897 ServerApp] ServerApp.token config is deprecated in 2.0. Use IdentityProvider.token.
+[I 2023-05-06 15:41:39.902 ServerApp] Package jupyterlab took 0.0000s to import
+[I 2023-05-06 15:41:40.985 ServerApp] Package domino_code_assist.jupyter.server_extension took 1.0823s to import
+[W 2023-05-06 15:41:40.985 ServerApp] A `_jupyter_server_extension_points` function was not found in domino_code_assist.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-05-06 15:41:40.988 ServerApp] Package jupyter_server_fileid took 0.0023s to import
+[I 2023-05-06 15:41:40.989 ServerApp] Package jupyter_server_mathjax took 0.0010s to import
+[I 2023-05-06 15:41:41.198 ServerApp] Package jupyter_server_proxy took 0.2082s to import
+[I 2023-05-06 15:41:41.201 ServerApp] Package jupyter_server_terminals took 0.0022s to import
+[I 2023-05-06 15:41:41.224 ServerApp] Package jupyter_server_ydoc took 0.0224s to import
+[I 2023-05-06 15:41:41.239 ServerApp] Package jupyterlab_git took 0.0148s to import
+[I 2023-05-06 15:41:41.239 ServerApp] Package nbclassic took 0.0000s to import
+[W 2023-05-06 15:41:41.241 ServerApp] A `_jupyter_server_extension_points` function was not found in nbclassic. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-05-06 15:41:41.241 ServerApp] Package nbdime took 0.0000s to import
+[I 2023-05-06 15:41:41.241 ServerApp] Package notebook_shim took 0.0000s to import
+[W 2023-05-06 15:41:41.241 ServerApp] A `_jupyter_server_extension_points` function was not found in notebook_shim. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-05-06 15:41:41.250 ServerApp] Package solara.server.jupyter.server_extension took 0.0078s to import
+[W 2023-05-06 15:41:41.250 ServerApp] A `_jupyter_server_extension_points` function was not found in solara.server.jupyter.server_extension. Instead, a `_jupyter_server_extension_paths` function was found and will be used for now. This function name will be deprecated in future releases of Jupyter Server.
+[I 2023-05-06 15:41:41.250 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully linked.
+[I 2023-05-06 15:41:41.254 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2023-05-06 15:41:41.258 ServerApp] jupyter_server_mathjax | extension was successfully linked.
+[I 2023-05-06 15:41:41.258 ServerApp] jupyter_server_proxy | extension was successfully linked.
+[I 2023-05-06 15:41:41.261 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2023-05-06 15:41:41.265 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[W 2023-05-06 15:41:41.266 LabApp] 'iopub_data_rate_limit' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2023-05-06 15:41:41.266 LabApp] 'disable_check_xsrf' has moved from NotebookApp to ServerApp. This config will be passed to ServerApp. Be sure to update your config before our next release.
+[W 2023-05-06 15:41:41.269 ServerApp] ServerApp.iopub_data_rate_limit config is deprecated in 2.0. Use ZMQChannelsWebsocketConnection.iopub_data_rate_limit.
+[I 2023-05-06 15:41:41.269 ServerApp] jupyterlab | extension was successfully linked.
+[I 2023-05-06 15:41:41.269 ServerApp] jupyterlab_git | extension was successfully linked.
+[I 2023-05-06 15:41:41.273 ServerApp] nbclassic | extension was successfully linked.
+[I 2023-05-06 15:41:41.273 ServerApp] nbdime | extension was successfully linked.
+[I 2023-05-06 15:41:41.274 ServerApp] Writing Jupyter server cookie secret to /home/ubuntu/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2023-05-06 15:41:41.276 ServerApp] notebook_shim | extension was successfully linked.
+[I 2023-05-06 15:41:41.276 ServerApp] solara.server.jupyter.server_extension | extension was successfully linked.
+[W 2023-05-06 15:41:41.299 ServerApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
+[I 2023-05-06 15:41:41.300 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2023-05-06 15:41:41.300 ServerApp] domino_code_assist.jupyter.server_extension | extension was successfully loaded.
+[I 2023-05-06 15:41:41.300 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2023-05-06 15:41:41.301 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /
+[I 2023-05-06 15:41:41.301 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/ubuntu/.local/share/jupyter/file_id_manager.db
+[I 2023-05-06 15:41:41.301 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2023-05-06 15:41:41.301 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2023-05-06 15:41:41.308 FileIdExtension] Attached event listeners.
+[I 2023-05-06 15:41:41.308 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2023-05-06 15:41:41.309 ServerApp] jupyter_server_mathjax | extension was successfully loaded.
+[I 2023-05-06 15:41:41.321 ServerApp] jupyter_server_proxy | extension was successfully loaded.
+[I 2023-05-06 15:41:41.323 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2023-05-06 15:41:41.323 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2023-05-06 15:41:41.324 LabApp] JupyterLab extension loaded from /opt/conda/lib/python3.9/site-packages/jupyterlab
+[I 2023-05-06 15:41:41.324 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 2023-05-06 15:41:41.329 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2023-05-06 15:41:41.336 ServerApp] jupyterlab_git | extension was successfully loaded.
+[I 2023-05-06 15:41:41.340 ServerApp] nbclassic | extension was successfully loaded.
+[I 2023-05-06 15:41:41.394 ServerApp] nbdime | extension was successfully loaded.
+[I 2023-05-06 15:41:41.395 ServerApp] solara.server.jupyter.server_extension | extension was successfully loaded.
+[I 2023-05-06 15:41:41.396 ServerApp] Serving notebooks from local directory: /
+[I 2023-05-06 15:41:41.396 ServerApp] Jupyter Server 2.3.0 is running at:
+[I 2023-05-06 15:41:41.396 ServerApp] http://run-64567511b3229e4ac78372d4-hrj2l:8888/domino_admin/workshoptest/notebookSession/64567511b3229e4ac78372d4/lab/tree/mnt
+[I 2023-05-06 15:41:41.396 ServerApp]     http://127.0.0.1:8888/domino_admin/workshoptest/notebookSession/64567511b3229e4ac78372d4/lab/tree/mnt
+[I 2023-05-06 15:41:41.396 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2023-05-06 15:41:44.174 ServerApp] 302 GET /domino_admin/workshoptest/notebookSession/64567511b3229e4ac78372d4/ (@10.0.36.31) 0.77ms
+[I 2023-05-06 15:41:44.352 LabApp] Generating new user for token-authenticated request: 8fd4194596c1418aa515089244d8d373
+[I 2023-05-06 15:41:44.568 ServerApp] 302 GET /domino_admin/workshoptest/notebookSession/64567511b3229e4ac78372d4/ (@10.0.36.31) 0.50ms
+[I 2023-05-06 15:41:51.049 LabApp] Build is up to date
+[I 2023-05-06 15:41:59.424 ServerApp] New terminal with automatic name: 1

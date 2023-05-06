@@ -37,6 +37,8 @@ To make things easier we are going to leverage Domino Code Assist (DCA) a low co
 
 Click on the magnifying glass search icon in the top left of the UI. Search for the "hybrid-workshop" project and click on it when it comes up.
 
+TODO image
+
 To fork the project by clicking the button in the top right of the project overview page:
 
 <p align="center">
@@ -47,7 +49,7 @@ Name your project hybrid-workshop with your initials at the end, e.g. "hybrid-wo
 
 ### 1.2 Add The Data to the Project
 
-Domino has many different ways to connect to data but in this example our data is stored in mounted drives in our three TODO different regions. We we also add a connection to our Snowflake instance that our admin has configured for us, this will be used to consolodate some simple metadata from the different regions.
+Domino has many different ways to connect to data but in this example our data is stored in mounted drives in our three different regions, AWS USA West, AWS Ireland and Azure Canada. We will also add a connection to our Snowflake instance that our admin has configured for us, this will be used to consolodate some simple metadata from the different regions.
 
 To add data mounts to our project we need to:
 
@@ -77,19 +79,38 @@ Workspaces in Domino are the interactive development environments.
 
 To start one navigate to the Workspaces tab on the left, and select “Create New Workspace”.
 
+<p align="center">
+<img src = readme_images/create_workspace.png width="800">
+</p>
+
 Domino is an open platform that supports many different IDEs, giving data scientists the flexability to work with the tools they are most productive with. In this example we will use JupyterLab so select that.
 
-Next we need to decide which cloud and which region we want to work on. Domino makes this really easy. Click on the Hardware Tier drop down. You will be provided with a list of different hardware that you can run your work on. Select one of the Small instances in either AWS Ireland or Azure Canada TODO-access?
+Next we need to decide which cloud and which region we want to work on. **Domino makes this really easy.** Click on the Hardware Tier drop down. You will be provided with a list of different hardware that you can run your work on. Select one of the Small instances in 'Local' (AWS USA West), AWS Ireland or Azure Canada depending on which data you would like to work with:
+
+* NPSHYD (Non-Pump Storage Hydro) data is in AWS in the west coast of the USA - our main data science hub.
+* CCGT (Combined Cycle Gas Turbine) data is in AWS in Ireland
+* WIND (Wind turbine) data is in Azure in Canada
+
 
 <p align="center">
 <img src = readme_images/hardware_tier.png width="800">
 </p>
 
+Next click on **Compute Cluster**. Domino also gives us the flexability to create distributed compute clusters in the different clouds without the devops overhead! So if we wanted to use a Spark cluster for our data preparation, or a Ray cluster for distributed model training or even MPI on our on-premise HPC hardware we can do that at the click of a button.
+
+<p align="center">
+<img src = readme_images/clusters.png width="800">
+</p>
+
 Navigate to the additional details settings. Note that you can see which data volumes are available in the region you have selected. You will not be able to access the data in the other regions in this case, maintaining our data residency.
 
-TODO image
+<p align="center">
+<img src = readme_images/edv_details.png width="800">
+</p>
 
 Click on the Launch button to start your workspace. This may take several minutes to start as it is seamlessly provisioning resources for you in a distant cloud no devops work or IT tickets required!
+
+This demonstrates how Domino removes the complexity of hybrid and multi-cloud environments by providing a single seamless interface for working in different geographies/clouds with different data.
 
 
 ### 1.4 Initializing DCA in a Notebook: Python
@@ -131,7 +152,7 @@ There are many ways to load a dataset into your notebook using Code Assist. To g
 * **Quick Start:** has some demo datasets for testing playing around with DCA.
 
 For this tutorial, we’ll want to access the dataset in the project files that has been mounted into the `data` folder. 
-Select the "data.csv" file.
+Select the "data.csv" file. For simplicity the location and filename will be the same regardless of which region you chose.
 Note at the bottom that it saves this dataset as `df`.
 Click **Run** to load the data into the pandas dataframe. Note that the code is generated for you!
 
@@ -143,7 +164,7 @@ Click **Run** to load the data into the pandas dataframe. Note that the code is 
 
 You’ll notice most observations are at a 30-minute interval, but we’ve got some entries at odd intervals that have missing values from some sources. We can filter out null values using the DCA’s Transformations feature.
 
-In a new cell in your notebook, mouse over the DCA icon on the right and select Transformations. If you mouse over individual cells, you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the "Other" column, and select the filter:
+In a new cell in your notebook, mouse over the DCA icon on the right and select **Transformations**. If you mouse over individual cells, you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the "Other" column, and select the filter:
 
 <p align="center">
 <img src = readme_images/filer_nan.png width="800">
@@ -238,7 +259,7 @@ For this we want to create a new data frame that just has the timestamps and the
 
 For the predictive modelling we are going to use [Prophet](https://facebook.github.io/prophet/), which is already installed in this environment.
 
-Finally, we will want to save this model in case we wanted to utilise it later in the project as an API or in a web app for example.
+Finally, we will want to save this model in case we wanted to utilise it later in the project as an batch model, API or in a web app for example.
 
 To save time and complexity we have created a code snippet in DCA that we can use to train the model.
 
@@ -286,14 +307,18 @@ Again, to simplify this step we can use a code snippet in DCA. In a new cell go 
 
 Note: this will take 3 or 4 minutes to run, longer if you changed the initial or horizontal parameters. 
 
-At this point we have finished training our model 
+At this point we have finished training our model. 
 
-TODO
-## 6.0 Building a Live App with Domino Code Assistant
+The Snowflake call is sending metadata back to a central app. You can check where you and the other people in the workshop have been running your workloads on the main screen at the front of the class.
 
-What if we wanted to build an interactive, hosted app that displays power generation live as it comes in from an external source? So far, we have worked with a static dataset, but what if we wanted our power generation plot to refresh on a schedule and display in an app? 
+Next we will may want to tune the parameters of our model. This can be done using Domino's batch processing mechanism - Jobs. We are finished with our Workspace now, so you can click **Stop** at the top of the workspace to shut down the container and release the resources.
 
-You can accomplish this in Domino using two features: Scheduled Domino Jobs and Hosted Apps. 
+
+## 6.0 Batch Workloads
+
+What if we wanted to try some different parameter combinations to our model so we can tune it's effectiveness? We could do this in our workspace, and in this example that would be ok because we have a very small dataset. But if our training jobs took hours or even days, we would want to paralellise that. This is where Domino's Jobs functionality comes in. It allows us to run multiple simultaneous Jobs. These jobs can be any time of script, so could be used to data preparation, data processing, model training, model inference or any other batch task in your process.
+
+You can accomplish this in Domino using two features:  
 
 Scheduled jobs simply run a Python or R script from your Project in a container. Hosted apps make interactive apps available to other users in your organization via a web browser. You can write an app in any language you like - R Shiny, Flask, Dash, Streamlit and others, or you can use the Domino Code Assistant to turn your notebook into an app.
 

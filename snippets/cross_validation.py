@@ -14,4 +14,5 @@ sql = "INSERT INTO hybridworkshop (NAME, LOCATION, PROJECT, TYPE, FUEL, MAE, RMS
 ds.query(sql)
 
 # Lastly, print the performance metric results out
+print("Performance Metrics:")
 print(df_p)

@@ -1,16 +1,20 @@
 #! /bin/bash
-if [ -d "/domino/edv/european-customer-data" ] 
+if [ -d "/mnt/data" ]
 then
-    echo "Directory /domino/edv/european-customer-data exists."
-    ln -s "/domino/edv/european-customer-data" "/mnt/data2" 
-elif [ -d "/domino/edv/canadian-customer-data" ]
+    sudo unlink "/mnt/data"
+fi
+if [ -d "/domino/edv/aws-west-data" ] 
 then
-    echo "Directory /domino/edv/canadian-customer-data exists."
-    ln -s "/domino/edv/canadian-customer-data" "/mnt/data2"
-elif [ -d "/domino/edv/southeast-asia-customer-data" ]
+    echo "Directory /domino/edv/aws-west-data exists."
+    sudo ln -s "/domino/edv/aws-west-data" "/mnt/data" 
+elif [ -d "/domino/edv/azure-canada-files" ]
 then
-    echo "Directory /domino/edv/southeast-asia-customer-data exists."
-    ln -s "/domino/edv/southeast-asia-customer-data" "/mnt/data2"
+    echo "Directory /domino/edv/azure-canada-files exists."
+    sudo ln -s "/domino/edv/azure-canada-files" "/mnt/data"
+elif [ -d "/domino/edv/aws-ireland-data" ]
+then
+    echo "Directory /domino/edv/aws-ireland-data exists."
+    sudo ln -s "/domino/edv/aws-ireland-data" "/mnt/data"
 else
     echo "Error: External Volume not added - speak to your instructor"
 fi

@@ -46,7 +46,7 @@ plt.gcf()
 fig = m.plot(forecast)
 plt.plot(X_test['ds'].dt.to_pydatetime(), X_test['y'], 'r', linewidth = 1, linestyle = '--', label = 'real')
 plt.legend()
-plt.savefig("results/results.png")
+plt.savefig("results/" + fuel_type + "_results.png")
  
 from fbprophet.diagnostics import performance_metrics
 from fbprophet.diagnostics import cross_validation
