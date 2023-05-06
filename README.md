@@ -1,11 +1,28 @@
-# Domino-Code-Assistant-Workshop
-An introductory workshop to [Domino's Code Assistant](https://dominodatalab.github.io/domino-code-assist-docs/latest/)
+# TODO Domino-Code-Assistant-Workshop
+TODO An introductory workshop to [Domino's Code Assistant](https://dominodatalab.github.io/domino-code-assist-docs/latest/)
 
 ### Data Source
 
-[Balancing Mechanism Reporting Service](https://www.bmreports.com/bmrs/?q=help/about-us) is the primary channel for providing operational data relating to the GB Electricity Balancing and Settlement arrangements. It is used extensively by market participants to help make trading decisions and understanding market dynamics and acts as a prompt reporting platform as well as a means of accessing historic data. 
+[Balancing Mechanism Reporting Service](https://www.bmreports.com/bmrs/?q=help/about-us) is the primary channel for providing operational data relating to the GB Electricity Balancing and Settlement arrangements. It is used extensively by market participants to help make trading decisions and understanding market dynamics and acts as a prompt reporting platform as well as a means of accessing historic data.
 
-#### In this workshop you will work through an end-to-end workflow to ingest, clean & vizualize data from BMRS:
+### Hybrid Multi-Cloud
+
+Our organisation is multi-national with investments in several cloud technologies to support our teams around the world working on different energy production mechanisms. As such our data science teams must navigate data residency rules and process certain types of data in their countries of origin. This can be a very manual task that often involves setting up different technology stacks in the different clouds/regions.
+
+Luckily Domino makes working with remote data trivial through Domino Nexus!
+
+In this scenario we have our energy production data stored as follows:
+NPSHYD (Non-Pump Storage Hydro) data is in AWS in the west coast of the USA - our main data science hub.
+CCGT (Combined Cycle Gas Turbine) data is in AWS in Dublin, Ireland
+WIND (Wind turbine) data is in Azure in Canada
+
+TODO architecture diagram.
+
+### Domino Code Assistant (DCA)
+
+To make things easier we are going to leverage Domino Code Assist (DCA) a low code assistant for Jupyter/RStudio than can help users learn R/Python, or provide a productivity tool to experienced coders.
+
+#### In this workshop you will work through an end-to-end workflow to ingest, vizualize the remote data as well as build a simple predictive model:
 
 * Set up Domino Code Assist in your Project & Workspace
 * Explore data ingest with Code Assist
@@ -14,44 +31,76 @@ An introductory workshop to [Domino's Code Assistant](https://dominodatalab.gith
 * Insert and create code snippets for future re-use
 * Build an app using Domino Code Assistant 
 
-## Section 1 - Setting Up Domino Code Assistant (DCA)
+## Section 1 - Setting Up Your Project
 
-### 1.1 Installing Domino Code Assistant (DCA)
+### 1.1 Fork The Workshop Project
 
-Domino Code Assistant is simply a Python or R package running in a Domino Workspace.
+Click on the magnifying glass search icon in the top left of the UI. Search for the "hybrid-workshop" project and click on it when it comes up.
 
-There are four distinct approaches to installing Domino Code Assist (DCA) for either Python or R:
-
-* Install in a Workspace
-* Install in a Project
-* Install in a Compute Environment
-* Install from Source.
-
-The first approach is the easiest way to get started with DCA. But if you restart you workspace, then you will need to reinstall DCA, which is a bit slower. The second and third approaches will enable DCA more permanently.
-
-For this lab, we'll use a Compute Environment  with DCA already installed, which will be a Domino Standard Environment for Domino 5.5 or later. To ensure all workspaces have DCA pre-installed, go into the settings tab in your Project. Ensure the compute environment is set to a Domino 5.5+ standard environment: 
+To fork the project by clicking the button in the top right of the project overview page:
 
 <p align="center">
-<img src = readme_images/default_env.png width="800">
+<img src = readme_images/fork.png>
 </p>
 
-For details on how to install Domino Code Assistant in a Workspace or Project rather than environment, see the [DCA Install Documentation].(https://dominodatalab.github.io/domino-code-assist-docs/latest/install/#install-in-a-workspace)
+Name your project hybrid-workshop with your initials at the end, e.g. "hybrid-workshop-BJP"
 
-### 1.2 Initializing DCA in a Notebook: Python
+### 1.2 Add The Data to the Project
 
-Now that we have a default Project environment with DCA pre-installed, create a new workspace.  
+Domino has many different ways to connect to data but in this example our data is stored in mounted drives in our three TODO different regions. We we also add a connection to our Snowflake instance that our admin has configured for us, this will be used to consolodate some simple metadata from the different regions.
 
-In your Project, navigate to the Workspaces tab on the left, and select “Create New Workspace”. Leave the default Hardware Tier and Environment.
+To add data mounts to our project we need to:
 
-Select the IDE of your choice, and click Launch. Most of the images in this tutorial use JupyterLab, so you may want to select JupyterLab to make it easier to  follow along. However, if you are an R user, feel free to launch RStudio instead to use the R version of DCA.
+1) Click on "Data" under the Materials section of our project
+2) Click on "External Volumes" in the bar along the top
+3) Click on the "Add External Volume" button and select on of the volumes
+4) Repeat 3) until all the volumes have been added to your project
 
-Once your IDE is started up, craete a new Notebook and rename it "DCA_Tutorial.ipynb"
+<p align="center">
+<img src = readme_images/data_volumes.png width="800">
+</p>
+
+To add the Snowflake data source to our project we need to:
+
+1) Click on "Data" under the Materials section of our project
+2) Click on "Data Sources" in the bar along the top
+3) Click on the "Add Data Source" button
+4) Only one data source is available, our Snowflake instance, configured with it's service account credentials. Click **add to project**.
+
+<p align="center">
+<img src = readme_images/data_sources.png width="800">
+</p>
+
+### 1.3 Creating a Workspace
+
+Workspaces in Domino are the interactive development environments. 
+
+To start one navigate to the Workspaces tab on the left, and select “Create New Workspace”.
+
+Domino is an open platform that supports many different IDEs, giving data scientists the flexability to work with the tools they are most productive with. In this example we will use JupyterLab so select that.
+
+Next we need to decide which cloud and which region we want to work on. Domino makes this really easy. Click on the Hardware Tier drop down. You will be provided with a list of different hardware that you can run your work on. Select one of the Small instances in either AWS Ireland or Azure Canada TODO-access?
+
+<p align="center">
+<img src = readme_images/hardware_tier.png width="800">
+</p>
+
+Navigate to the additional details settings. Note that you can see which data volumes are available in the region you have selected. You will not be able to access the data in the other regions in this case, maintaining our data residency.
+
+TODO image
+
+Click on the Launch button to start your workspace. This may take several minutes to start as it is seamlessly provisioning resources for you in a distant cloud no devops work or IT tickets required!
+
+
+### 1.4 Initializing DCA in a Notebook: Python
+
+Once your IDE is started up, create a new Notebook and rename it "Hybrid_Tutorial.ipynb"
 
 <p align="center">
 <img src = readme_images/new_workspace.png width="800">
 </p>
 
-Then click on the blue Domino Code Assist button on the toolbar to initialize the Code Assistant. 
+Then click on the blue **Domino Code Assist** button on the toolbar to initialize the Code Assistant. 
 
 <p align="center">
 <img src = readme_images/DCA_init.png width="800">
@@ -63,21 +112,9 @@ When you hover over the next cell in your Notebook, a blue DCA icon should appea
 <img src = readme_images/DCA-icon.png width="800">
 </p>
 
-### 1.2 Initializing DCA in a Notebook: R Studio
-
-DCA works similarly between Python notebooks and R Notebooks, but the UI is different. 
-
-Create a new Workspace, but choose R Studio as your IDE. 
-
-Once R Studio is up and running, there is no need to initialize DCA, the DCA tools are already available in the Addins menu:
-
-<p align="center">
-<img src = readme_images/R_Init.png width="800">
-</p>
-
 ## Section 2 - Data Ingest
 
-There are many ways to load a dataset into your notebook using Code Assist. To get started, in the DCA Menu, select Load Data from the DCA menu ("DCA Load Data" for R Studio Users): 
+There are many ways to load a dataset into your notebook using Code Assist. To get started, in the DCA Menu, select Load Data from the DCA menu:
 
 <p align="center">
 <img src = readme_images/DCA_menu_load_data.png width="800">
@@ -93,7 +130,10 @@ There are many ways to load a dataset into your notebook using Code Assist. To g
 
 * **Quick Start:** has some demo datasets for testing playing around with DCA.
 
-For this tutorial, we’ll start with a small dataset in the project files saved in the `data` folder. Note at the bottom that it saves this dataset as `df` - you may want to change this if you plan to bring in multiple datasets into your notebook.
+For this tutorial, we’ll want to access the dataset in the project files that has been mounted into the `data` folder. 
+Select the "data.csv" file.
+Note at the bottom that it saves this dataset as `df`.
+Click **Run** to load the data into the pandas dataframe. Note that the code is generated for you!
 
 <p align="center">
 <img src = readme_images/load_data.png width="800">
@@ -103,7 +143,7 @@ For this tutorial, we’ll start with a small dataset in the project files saved
 
 You’ll notice most observations are at a 30-minute interval, but we’ve got some entries at odd intervals that have missing values from some sources. We can filter out null values using the DCA’s Transformations feature.
 
-In a new cell in your notebook, mouse over the DCA icon on the right and select Transformations. If you mouse over individual cells, you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the CCGT column, and select the filter:
+In a new cell in your notebook, mouse over the DCA icon on the right and select Transformations. If you mouse over individual cells, you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the "Other" column, and select the filter:
 
 <p align="center">
 <img src = readme_images/filer_nan.png width="800">
@@ -121,17 +161,15 @@ If you scroll down to the bottom and toggle on **Show Code**, you can see the sa
 <img src = readme_images/show_code.png width="800">
 </p>
 
-As a final step, go ahead and filter out the null values in the OTHER column in the spreadsheet. After applying the new transform, the following code should appear in the preview:
+As a final step, go ahead and filter out the null values in the CCGT/WIND/NPSHYD column in the spreadsheet, depending on which data you are working with. After applying the new transform, the following code (or similar) should appear in the preview:
 
 ```
-df = df.loc[df["CCGT"].notna()]
 df = df.loc[df["OTHER"].notna()]
+df = df.loc[df["CCGT"].notna()]
 df
 ```
 
 Go ahead and click **Run** to insert the filtered null values.
-
-_Optional: Feel free to load a demo dataset such as Palmer Penguins to test out the other features, such as group-by and aggregate._
 
 You may be wondering if this method is inefficient for applying filters to really wide datasets with 100s columns - why not just use a method like `df.dropna()`? The answer is that you _should_ use features beyond what is offered out of the box with DCA. Code assist is just meant to be a starter, but you should feel free to build on features here and not be limited by the assistant. In fact, you can save commonly used code as custom snippets, which we’ll cover later. 
 
@@ -141,13 +179,13 @@ After cleaning up our data, the next step is to visualize it.
 
 From the DCA menu, select **Visualizations**.
 
-Select the data frame name you saved `app_data.csv` to, and set the plot type to **Area**.
+Select the data frame name you in the previous steps ('df'), and set the plot type to **Area**.
 
-Set the X-axis to “datetime” and the Y-axis to “CCGT” (or any column of your choice).
+Set the X-axis to “datetime” and the Y-axis to “CCGT”, "WIND" or "NPSHYD" depending on which data you are working with.
 
 Under Options, set the Theme to any you like.
 
-Inspect the code at the bottonm, then hit **Run**
+Inspect the code at the bottom, then hit **Run**
 
 <p align="center">
 <img src = readme_images/area_plot.png width="800">
@@ -155,7 +193,7 @@ Inspect the code at the bottonm, then hit **Run**
 
 You now have an Area chart of power generated by your selected source. Note that this is just one of many types of plots, and you can customize the plot from here - feel free to modify the Python (or R) code DCA has written for you.
 
-## Section 5 - Code Snippets
+## Section 5 - Training our Model using Code Snippets
 
 So far, we have relied on DCA’s existing features to apply transforms or plot our data. But what if we want to do something DCA doesn’t do out of the box? For example, what if we want to do time-based aggregations, or plot electric production by source all on a single area plot?
 
@@ -182,56 +220,7 @@ Click on **Save as Snippet**:
 <img src = readme_images/save_snippet.png width="800">
 </p>
 
-Give your snippet the name `drop_null_rows`, select the current project as your repository, and click **Add**. 
-
-To test it out, create a new Notebook, and repeat the first steps, but with the new snippet:
-
-1) Initialize code assist in the first cell
-2) Import `app_data.csv` from Project Files in the second cell
-3) In the DCA menu, go to **Insert snippet**, and select your new `drop_null_rows` code to insert in the third cell
-
-<p align="center">
-<img src = readme_images/drop_null_example.png width="800">
-</p>
-
-Close out of your test notebook, and delete it if you'd like.
-
-
-### 5.2 Importing an Existing Snippet
-
-What if we wanted to plot production by all sources on the same area plot? We could write a function to stack the dataframe by source, then select a specific time window to plot. DCA doesn't do this out of the box, but fortunately this code already exists from a different project. To prevent repeating work, we could save this “stacking” and time window selection code into a snippet, and make it easily reusable code in other projects.
-
-To try this out, return to your first notebook, and in the DCA menu, select **Insert Snippet**, select the following snippet that was created earlier for this lab, and run it:
-
-`stack_power_by_source`
-
-<p align="center">
-<img src = readme_images/import_stack.png width="800">
-</p>
-
-This code allows us to build an ares plot of production by all sources over the last day and week. The data frames are saved as `df_today` and `df_week`.
-
-Now, in the next cell, create a plot of power production in the last week by source. From the DCA menu, select **Visualizations**, and fill out the following cells:
-
-* DataFrame: df_week
-* Plot Type: Area
-* X-axis: datetime
-* Y-axis: Production (MW)
-* Color: Source
-
-<p align="center">
-<img src = readme_images/area_plot_by_source.png width="800">
-</p>
-
-Change the theme if you’d like, and **Run** to build your area plot.
-
-Depending on which theme you picked, your plot should look something like this:
-
-<p align="center">
-<img src = readme_images/week_plot.png width="800">
-</p>
-
-### 5.3 Sharing Snippets with Other Users and Projects
+Give your snippet the name `drop_null_rows`, select the current project as your repository, and click **Add**.
 
 This is great, but currently these snippets are only available in the current project files. What if I want to make a snippet available to everyone in other Projects, or even other instances of Domino? 
 
@@ -240,42 +229,66 @@ There are two ways to save code snippets:
 1) As files in your project in the snippets folder.
 2) Saved to an external repository that has been added as an **Imported Code Repository** to the project using the git service of your choice (Github, Gitlab etc.)
 
-If you add a public repository, you will have read-only access to snippets, meaning you can pull snippets in, but not save new snippets from your current workspace. If you want to try adding a public, read-only snippets repository, add this Github repository to your Project (no credentials needed):
 
-https://github.com/dominodatalab/low-code-assistant-snippets
+### 5.2 Training our model using Snippets
 
-In your Project, navigate to the **Code** tab on the left, then the **Git Repositories** tab at the top. Click on **Add a New Repository**. 
+Now that we have our base data and we've removed any missing values we want to use this to build a predictive model so we can estimate future demand for our fuel type.
 
-Paste the URI above, select **Github** as the Git Service Provider click **Add Repository**.
+For this we want to create a new data frame that just has the timestamps and the fuel amount. We'll then want to split this out into a training and testing set.
 
-<p align="center">
-<img src = readme_images/add_git_repo.png width="800">
-</p>
+For the predictive modelling we are going to use [Prophet](https://facebook.github.io/prophet/), which is already installed in this environment.
 
-_Note that once you add an external repository to your Project, you need to create a new Workspace. Sync your current Workspace to the Project, stop it, then create a new Workspace in the Project for the imported repository to be visible to Domino’s Code Assist._
+Finally, we will want to save this model in case we wanted to utilise it later in the project as an API or in a web app for example.
 
-Open up your Tutorial Notebook again, run all cells, then navigate to the DCA **Insert Snippets** menu in a new cell. You'll see an new `python` or `r` folder with the imported snippets now available.
+To save time and complexity we have created a code snippet in DCA that we can use to train the model.
 
+To try this out go back to the DCA menu, select **Insert Snippet**, select the following snippet, and click **Run**:
 
-
-**Optional:** If you'd like to save save your snippets to an external repository, you'll need to add or create a git repository that you have read write permissions for. The steps are: 
-
-1) Save your git credentials in your user account that give you read / write access to the snippets repository. Detailed instructions [here](https://docs.dominodatalab.com/en/latest/user_guide/314004/import-git-repositories/#step-1-create-credentials)
-2) Just like with the public repo, import the Git repo as an external repository to your Project and attach your read / write credentials. Detailed instructions [here](https://dominodatalab.github.io/domino-code-assist-docs/latest/project/files/)
-
-
-This example project has two git repositories for accessing snippets imported into the project. The first is a public repository, has no credentials, and can be used just for importing existing snippets. The second has read / write credentials attached, and can be used for reading, editing and saving new snippets.
+`train_model`
 
 <p align="center">
-<img src = readme_images/snippet_repos.png width="800">
+<img src = readme_images/train_snippet.png width="800">
 </p>
 
-Once you have an external snippets repo with read / write permissions added, you'll have the option to save snippets locally or in the external repo when you save them:
+This code will train our model. We're not aiming for the worlds greatest forcasting model, this is just an example.
+
+
+### 5.3 Forecast Fuel Demand
+
+Once we have built our model we want to start forecasting how much CCGT, WIND or NPSHYD fuel we will need in the future. To do this we can leverage Prophet's predict function on our model over a period of time.
+
+We can then plot this out using Matplotlib to see roughly how well our model is performing on this small set of data.
+
+Again, to simplify this step we can use a code snippet in DCA. In a new cell go to the DCS menu, select **Insert Snippet**, select the following snippet, and click **Run**:
+
+`predict_demand`
 
 <p align="center">
-<img src = readme_images/snippets_repo_example.png width="200">
+<img src = readme_images/demand_snippet.png width="800">
 </p>
 
+Note: this will take a couple of minutes to run.
+
+We can see from the graph how well our model is predicting the demand. No doubt this could be improved with a lot more data and some parameter tuning!
+
+
+### 5.3 Cross Validation
+
+We now want to calculate some performance metrics to assess the quality of the model we have trained. Luckily Prophet has a built in cross validation function that allows us to configure different time windows and calculate our RMSE and MAE.
+
+Again, to simplify this step we can use a code snippet in DCA. In a new cell go to the DCS menu, select **Insert Snippet**, select the following snippet, and click **Run**:
+
+`cross_validation`
+
+<p align="center">
+<img src = readme_images/validation_snippet.png width="800">
+</p>
+
+Note: this will take 3 or 4 minutes to run, longer if you changed the initial or horizontal parameters. 
+
+At this point we have finished training our model 
+
+TODO
 ## 6.0 Building a Live App with Domino Code Assistant
 
 What if we wanted to build an interactive, hosted app that displays power generation live as it comes in from an external source? So far, we have worked with a static dataset, but what if we wanted our power generation plot to refresh on a schedule and display in an app? 
