@@ -36,7 +36,7 @@ To make things easier we are going to leverage Domino Code Assist (DCA) a low co
 * Assess the performance of the model
 * Tune some parameters of our model in batch
 * Configure our model to be run on a scheduled basis
-* Deploy our model as an API
+* Publish our model as an API
 
 ## Section 1 - Setting Up Your Project
 
@@ -465,11 +465,85 @@ Navigate back to your project's **Files**. Click on the new file button in the t
 
 Name your file **forecast_predictor.py**
 
-Enter the following contents. BUT change out TODO
+Enter the following contents. BUT change out name of the pickle file on line 5 to match the data you have been working with: either modelNPSHYD.pkl', 'modelCCGT.pkl' or 'modelWIND.pkl':
+
+```
+import pickle
+import datetime
+import pandas as pd
+
+with open('model.pkl', 'rb') as f:
+    m = pickle.load(f)
+
+def predict(year, month, day):
+    '''
+    Input:
+    year - integer
+    month - integer
+    day - integer
+
+    Output:
+    predicted generation in MW
+    '''
+    ds = pd.DataFrame({'ds': [datetime.datetime(year,month,day)]})
+    return m.predict(ds)['yhat'].values[0]
+```
+
+Save the file.
+
+### 7.2 Publish the Model API 
+
+Next navigate to **Model API** in the Publish section of the UI and click on **Create Model API**. This will open the dialog to configure your API.
+
+<p align="center">
+<img src = readme_images/model_apis.png width="800">
+</p>
+
+Here we want to enter a name and a description for our API so it can be found and consumed by the other users on the platform.
+
+For the name add in 'Power Generation' followed by the fuel type and your initials, e.g.:
+
+<p align="center">
+<img src = readme_images/model_api_name.png width="800">
+</p>
+
+Then click **Next**.
+
+Here we can simply add the name of the wrapper file we just created, forcast_predictor.png, and the function name: predict
+
+The other settings on this page show the flexability of the publishing framework, again without the need to configure any platform resources drop into a cloud console or raise an IT ticket. Maximising our data science productivity. Keep these settings as standard for now, but note:
+* Environments - allows us to create customer container definitions specfically for our Model APIs - perhaps a cut down image containing only the libraries we need at this stage. Or one with environment variables set for connecting to data services.
+* Resource Quota - allows us to configure how many containers are deployed and their compute size to scale out to more requests.
+* Request Type - the option to have syc APIs depending on the complexity of our models.
+* Logging - in case we want to configure model monitoring for our API to monitor drift and accuracy over time.
+
+Click **Create Model** to start the model publishing process. Note: this can take several minutes you may want to move on to the next section while you wait.
+
+<p align="center">
+<img src = readme_images/model_api_settings.png width="800">
+</p>
+
+Once the model is running, to test your model click on the **Overview tab** and you will see a tester UI at the bottom. Paste the following into the **Request** box and click **Send**:
+
+```
+{
+  "data": {
+    "year": 2023,
+    "month": 10,
+    "day": 15
+  }
+}
+```
+
+After a moment your response should come through showing the API payload and the GW forecast for your fuel type.
+
+<p align="center">
+<img src = readme_images/model_api_test.png width="800">
+</p>
 
 ## 8. Wrap up and Summary
 
-Please stop your workspace
+Congratulations you have made it to the end of the practical side of the workshop. In less than 90 mins you have:
 
 * Set up your Project and add the data in different cloud regions
 * Explore data ingest with Code Assist
@@ -479,3 +553,4 @@ Please stop your workspace
 * Assess the performance of the model
 * Tune some parameters of our model in batch
 * Configure our model to be run on a scheduled basis
+* Publish our model as an API
