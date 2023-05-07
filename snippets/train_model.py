@@ -20,5 +20,5 @@ m.fit(X_train)
 
 # save our model file
 import pickle
-with open("model.pkl", "wb") as f:
+with open("model" + fuel_type + ".pkl", "wb") as f:
       pickle.dump(m, f)
