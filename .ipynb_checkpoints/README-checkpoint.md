@@ -18,7 +18,9 @@ In this scenario we have our energy production data stored as follows:
 * CCGT (Combined Cycle Gas Turbine) data is in AWS in Ireland
 * WIND (Wind turbine) data is in Azure in Canada
 
-TODO architecture diagram.
+<p align="center">
+<img src = readme_images/arch.png>
+</p>
 
 ### Domino Code Assistant (DCA)
 
@@ -39,9 +41,11 @@ To make things easier we are going to leverage Domino Code Assist (DCA) a low co
 
 ### 1.1 Fork The Workshop Project
 
-Click on the magnifying glass search icon in the top left of the UI. Search for the "hybrid-workshop" project and click on it when it comes up.
+Click on the magnifying glass search icon in the top left of the UI. Search for the "hybrid workshop master" project and click on it when it comes up:
 
-TODO image
+<p align="center">
+<img src = readme_images/hybrid_workshop_search.png>
+</p>
 
 To fork the project by clicking the button in the top right of the project overview page:
 
