@@ -319,19 +319,30 @@ At this point we have finished training our model.
 
 The Snowflake call is sending metadata back to a central app. You can check where you and the other people in the workshop have been running your workloads on the main screen at the front of the class.
 
-Next we will may want to tune the parameters of our model. This can be done using Domino's batch processing mechanism - Jobs.
+Next we will may want to tune the parameters of our model. This can be done using Domino's batch processing mechanism - **Jobs**.
 
+Before we move on - please stop your Workspace using the **Stop** button 
+
+<p align="center">
+<img src = readme_images/stop.png>
+</p>
 
 ## 6.0 Batch Workloads
 
 What if we wanted to try some different parameter combinations to our model so we can tune it's effectiveness? We could do this in our workspace, and in this example that would be ok because we have a very small dataset. But if our training jobs took hours or even days, we would want to paralellise that. This is where Domino's **Jobs** functionality comes in. It allows us to run multiple simultaneous Jobs. These jobs can be any type of script, so could be used to data preparation, data processing, model training, model inference or any other batch task in your process.
 
-We will also want to schedule this retraining to run on a regular basis as our remote data will be updated regularly by other processes. Domino has a **Scheduled Job** capability for that.  
+We will also want to schedule this retraining to run on a regular basis as our remote data will be updated regularly by other processes. Domino has a **Scheduled Job** capability for that. 
 
 
 ### 6.1 Our Batch File
 
-To get a sense how Domino Jobs work, first take a look at the Python script `batch_predict.py` in your project files within your workspace. This is a script that follows the same flow that we have gone through in Section 5 of this workshop, but adds the ability to parameterise the model and is refactored to run as a simple Python script. This allows us to easy run multiple simultaneous executions to train different parameter combinations.
+To get a sense how Domino Jobs work, first take a look at the Python script `batch_predict.py` in your project files within your workspace. 
+
+<p align="center">
+<img src = readme_images/files.png>
+</p>
+
+This is a script that follows the same flow that we have gone through in Section 5 of this workshop, but adds the ability to parameterise the model and is refactored to run as a simple Python script. This allows us to easy run multiple simultaneous executions to train different parameter combinations.
 
 You'll notice on lines 7 and 8 we are reading in our model parameters as command line options:
 ```
@@ -435,6 +446,15 @@ Set your Job to run every week on Sunday at midnight:
 
 Click **Next** to the last window and Click **Create**. Now our model will be updated every Sunday at midnight.
 
-### 6.TODO Summary
+## 7. Wrap up and Summary
 
-Don't forget to Stop your workspace when you're done, and happy app building!
+Please stop your workspace
+
+* Set up your Project and add the data in different cloud regions
+* Explore data ingest with Code Assist
+* Work through pre-built transforms to your data
+* Create plots using pre-built visualizations
+* Train our forecasting model in the remote cloud
+* Assess the performance of the model
+* Tune some parameters of our model in batch
+* Configure our model to be run on a scheduled basis
