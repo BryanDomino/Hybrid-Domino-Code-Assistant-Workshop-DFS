@@ -355,7 +355,7 @@ seasonality_prior = float(sys.argv[2])
 
 We can set these when we kick off the job.
 
-Another change in this file is at the end, lines 74-76.
+Another change in this file is at the end, lines 79-81.
 ```
 import json
 with open('/mnt/dominostats.json', 'w') as f:

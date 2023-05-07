@@ -41,6 +41,11 @@ params = {
 
 m = Prophet(**params)
 m.fit(X_train)
+
+# save our model file
+import pickle
+with open("model" + fuel_type + ".pkl", "wb") as f:
+      pickle.dump(m, f)
  
 future = m.make_future_dataframe(periods=int(len(y_test)/2), freq='H')
 forecast = m.predict(future)
