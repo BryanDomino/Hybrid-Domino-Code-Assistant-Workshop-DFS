@@ -15,7 +15,7 @@ Luckily Domino makes working with remote data trivial through [Domino Nexus](htt
 
 In this scenario we have our energy production data stored as follows:
 * NPSHYD (Non-Pump Storage Hydro) data is in AWS in the west coast of the USA - our main data science hub.
-* CCGT (Combined Cycle Gas Turbine) data is in AWS in Dublin, Ireland
+* CCGT (Combined Cycle Gas Turbine) data is in AWS in Ireland
 * WIND (Wind turbine) data is in Azure in Canada
 
 TODO architecture diagram.
@@ -315,7 +315,7 @@ At this point we have finished training our model.
 
 The Snowflake call is sending metadata back to a central app. You can check where you and the other people in the workshop have been running your workloads on the main screen at the front of the class.
 
-Next we will may want to tune the parameters of our model. This can be done using Domino's batch processing mechanism - Jobs. We are finished with our Workspace now, so you can click **Stop** at the top of the workspace to shut down the container and release the resources.
+Next we will may want to tune the parameters of our model. This can be done using Domino's batch processing mechanism - Jobs.
 
 
 ## 6.0 Batch Workloads
@@ -325,56 +325,111 @@ What if we wanted to try some different parameter combinations to our model so w
 We will also want to schedule this retraining to run on a regular basis as our remote data will be updated regularly by other processes. Domino has a **Scheduled Job** capability for that.  
 
 
-### 6.1 Domino Jobs TODO
+### 6.1 Our Batch File
 
-To get a sense how Domino Jobs work, first take a look at the Python script `pull_daily_data.py` in your project files. This is a script that pulls data from BMRS’s website, using an optional user-specified start and end date. It cleans up the raw data, then appends it to the generation history in the Project’s Domino Dataset.
+To get a sense how Domino Jobs work, first take a look at the Python script `batch_predict.py` in your project files within your workspace. This is a script that follows the same flow that we have gone through in Section 5 of this workshop, but adds the ability to parameterise the model and is refactored to run as a simple Python script. This allows us to easy run multiple simultaneous executions to train different parameter combinations.
 
-By default, it pulls the last 24 hours of data. To get a longer history saved to start with, we'll stat by running this script manually.
-
-Navigate out of your workspace, back to the Project, and click on Jobs on your Project's left hand menu. Click on Run, and in the File Name or Command enter the following command. We’ll tell it to pull data from January 1st up to today:
-
+You'll notice on lines 7 and 8 we are reading in our model parameters as command line options:
 ```
-pull_daily_data.py '--start=2023-01-01 00:00:00'
+changepoint_prior = float(sys.argv[1])
+seasonality_prior = float(sys.argv[2])
 ```
 
-Ensure your Run Environment matches your Workspace environment, and click on **Start**.
+* changepoint_prior determines the scale of the change at the time series trend change point. The recommended tuning range is 0.001 to 0.5.
+* seasonality_prior controls the magnitude of the seasonality fluctuation. The recommended tuning range is 0.01 to 10.
 
+We can set these when we kick off the job.
+
+Another change in this file is at the end, lines 74-76.
+```
+import json
+with open('/mnt/dominostats.json', 'w') as f:
+    f.write(json.dumps({"MAE": round(df_p['mae'][0], 3), "RMSE": round(df_p['rmse'][0], 3)}))
+```
+Domino Jobs has a dashboard to log the main metrics in our batch jobs that we can populate by simply writing out to a JSON file. For this execution we have chosen to track MAE and RMSE.
+
+Note: Domino also has MLFlow embedded into the platform for more detailed execution tracking, but it is out of scope for this workshop. If you want to find out more come and talk to us after the session.
+
+
+### 6.2 Running the Job
+
+To actually start the Job we need to move back to the Jobs section of the main Domino UI:
 <p align="center">
-<img src = readme_images/manual_job.png width="800">
+<img src = readme_images/jobs_blank.png width="800">
 </p>
 
-In the background, Domino is executing our script as a job - it will ping BMRS’s site, download data, clean it up and save it in a Domino Dataset in our Project. This may take a minute, but the status should change from blue to green when the job is complete.
+From here click on the **Run** button. Here we will have a similar set of options as when we started our workspace, but this time we will be specifying the file we want to run and the parameters.
 
-Click into the `pull_daily_data` job run.
+Enter the following into the **File Name or Command** box:
+```
+batch_predict.py 0.01 0.1
+```
+Note you can change these values if you want to play with the parameter settings:
+* changepoint_prior recommended tuning range is 0.001 to 0.5.
+* seasonality_prior recommended tuning range is 0.01 to 10.
 
-In the **Details** tab on the right, note that the compute environment and hardware tier are tracked to document not only who ran the job, but when it was run and what versions of the code, software, and hardware were executed. 
+Next select the Hardware Tier in the region you would like to run in. You can choose the same region as you ran your workspace, or switch over to a different region and build your model on a different data set. It's up to you.
 
-Click into the **Results** tab. Here you can see any data, saved figures, and outputs from the script that was run.
+Remember:
+* NPSHYD (Non-Pump Storage Hydro) data is in AWS in the west coast of the USA (named Local)
+* CCGT (Combined Cycle Gas Turbine) data is in AWS in Ireland
+* WIND (Wind turbine) data is in Azure in Canada
+
+Click on **Start** to start the job.
+
+<p align="center">
+<img src = readme_images/jobs_batch.png width="800">
+</p>
+
+In the background, Domino is executing our script as a job - it will start a container in the region/cloud you selected, run through the code to read the data in that region, clean it up and build a new model. This may take a few minutes, but the status should change from blue to green when the job is complete.
+
+While your Job is running click into the `batch_predict` job run.
+
+In the **Details** tab on the right, note that the compute environment and hardware tier are tracked to document not only who ran the job, but when it was run and what versions of the code, software, and hardware were executed.
+
+Domino projects are designed to be collaborative, so in a real project you would be able to see all the experiments and batch workloads started by your colleagues so you don't have to rerun anything to find out what they have tested so far.
+
+The Jobs run here are also fully reproducible as we are tracking the versions of the code, container, libraries and in some cases the data as well. This is really important for regulated industries or teams where model validation or audit takes place. Domino makes it trivial to view or replay past work!
+
+<p align="center">
+<img src = readme_images/jobs_details.png width="800">
+</p>
+
+We can also check the status of our running job by looking at the **Logs** tab - this will allow us to view the User Output logs from the running container. We can scroll down and see some of the output of the script.
+
+Once your job has finished click into the **Results** tab. Here you can see any data, saved figures, and outputs from the script that was run. In our case we will be able to see the prediction graphic for our forecasting model and the details we wrote out in print statements in the stdout.txt file.
 
 ### 6.2 Scheduled Jobs 
 
-If we want to run this every day, we can use Domino to run the Job on a schedule. In the Jobs section of your Project, navigate to the **Schedules** tab, and click **Schedule a Job**.
+If we wanted to retrain or rerun this every week, we can use Domino to run the Job on a schedule. In the Publish section of your Project, click on **Schedules Jobs** tab, and click **Schedule a Job**.
 
-Call your job `Pull Daily Data`.
+<p align="center">
+<img src = readme_images/schedule.png width="800">
+</p>
 
-Just like with the manual Job, enter the script you want to run. It defaults to pulling the last 24 hours of data, so no need to pass it a start time: 
+Call your job `Weekly Model Retrain`.
+
+Just like with the manual Job, enter the script you want to run:
 
 ```
-pull_daily_data.py
+batch_predict.py 0.01 0.1
 ```
-Ensure your Run Environment matches your Workspace environment, and click **Next** until you're in the Schedule tab.
+
+Again select the Hardware Tier in the region you would like to run in.
+
+Click **Next** until you're in the **Schedule tab**.
 
 <p align="center">
 <img src = readme_images/schedule_1.png width="800">
 </p>
 
-Set your Job to run every day at midnight:
+Set your Job to run every week on Sunday at midnight:
 
 <p align="center">
 <img src = readme_images/schedule_2.png width="800">
 </p>
 
-Click to the last window and Click **Create**. Now the power generation data will be updated every day at midnight.
+Click **Next** to the last window and Click **Create**. Now our model will be updated every Sunday at midnight.
 
 ### 6.TODO Summary
 
