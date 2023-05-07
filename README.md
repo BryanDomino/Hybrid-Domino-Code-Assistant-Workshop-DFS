@@ -463,6 +463,10 @@ Navigate back to your project's **Files**. Click on the new file button in the t
 <img src = readme_images/new_file.png>
 </p>
 
+Name your file **forecast_predictor.py**
+
+Enter the following contents. BUT change out TODO
+
 ## 8. Wrap up and Summary
 
 Please stop your workspace
