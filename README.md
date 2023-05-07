@@ -517,7 +517,7 @@ The other settings on this page show the flexability of the publishing framework
 * Request Type - the option to have syc APIs depending on the complexity of our models.
 * Logging - in case we want to configure model monitoring for our API to monitor drift and accuracy over time.
 
-Click **Create Model** to start the model publishing process. Note: this can take several minutes you may want to move on to the next section while you wait.
+Click **Create Model** to start the model publishing process. Note: this can take several minutes.
 
 <p align="center">
 <img src = readme_images/model_api_settings.png width="800">
