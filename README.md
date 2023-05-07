@@ -546,11 +546,11 @@ After a moment your response should come through showing the API payload and the
 Congratulations you have made it to the end of the practical side of the workshop. In less than 90 mins you have:
 
 * Set up your Project and add the data in different cloud regions
-* Explore data ingest with Code Assist
-* Work through pre-built transforms to your data
-* Create plots using pre-built visualizations
-* Train our forecasting model in the remote cloud
-* Assess the performance of the model
-* Tune some parameters of our model in batch
-* Configure our model to be run on a scheduled basis
-* Publish our model as an API
+* Explored data ingest with Code Assist
+* Worked through pre-built transforms to your data
+* Created plots using pre-built visualizations
+* Trained our forecasting model in the remote cloud
+* Assessed the performance of the model
+* Tuned some parameters of our model in batch
+* Configured our model to be run on a scheduled basis
+* Published our model as an API
