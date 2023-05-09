@@ -173,7 +173,7 @@ Click **Run** to load the data into the pandas dataframe. Note that the code is 
 
 You’ll notice most observations are at a 30-minute interval, but we’ve got some entries at odd intervals that have missing values from some sources. We can filter out null values using the DCA’s Transformations feature.
 
-In a new cell in your notebook, mouse over the DCA icon on the right and select **Transformations**. If you mouse over individual cells, you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the "Other" column, and select the filter:
+In a new cell in your notebook, mouse over the DCA icon on the right and select **Transformations**. If you mouse over individual cells (The three dots specifically), you’ll see a popup appear next to the cell that allows you to **Filter values like this**. Hover over the `NaN` value in the "Other" column, and select the filter:
 
 <p align="center">
 <img src = readme_images/filer_nan.png width="800">
@@ -251,6 +251,8 @@ Click on **Save as Snippet**:
 </p>
 
 Give your snippet the name `drop_null_rows`, select the current project as your repository, and click **Add**.
+
+Now run the cell just to check.
 
 This is great, but currently these snippets are only available in the current project files. What if I want to make a snippet available to everyone in other Projects, or even other instances of Domino? 
 
@@ -501,7 +503,21 @@ Next navigate to **Model API** in the Publish section of the UI and click on **C
 
 Here we want to enter a name and a description for our API so it can be found and consumed by the other users on the platform.
 
-For the name add in 'Power Generation' followed by the fuel type and your initials, e.g.:
+For the name add in 'Power Generation' followed by the fuel type and your initials.
+
+For the description you can also add in a snippet of JSON to later test the model:
+
+```
+API to forecast future demand of the fuel type <your-fuel-type>
+{
+  "data": {
+    "year": 2023,
+    "month": 10,
+    "day": 15
+  }
+}
+
+```
 
 <p align="center">
 <img src = readme_images/model_api_name.png width="800">
