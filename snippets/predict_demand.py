@@ -2,6 +2,10 @@
 future = m.make_future_dataframe(periods=int(len(y_test)/2), freq='H')
 forecast = m.predict(future)
 
+# Suppress FutureWarning to keep the output clearer
+import warnings
+warnings.filterwarnings('ignore', category=FutureWarning)
+
 #And create a visualisation of it:
 import matplotlib.pyplot as plt
 plt.gcf()
