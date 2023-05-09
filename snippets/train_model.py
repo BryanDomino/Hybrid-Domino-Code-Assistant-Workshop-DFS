@@ -1,4 +1,5 @@
 # Using Prophet to predict future demand of our fuel type.
+
 # Prepare the data formatting for use, with the fuel_type = list(df.columns)[2] to pick the fuel type automatically
 fuel_type = list(df.columns)[2]
 fuel_type
@@ -12,6 +13,10 @@ proportion_in_training = 0.8
 split_index = int(proportion_in_training*len(y))
 X_train, y_train = X.iloc[:split_index], y.iloc[:split_index]
 X_test, y_test = X.iloc[split_index:], y.iloc[split_index:]
+
+# Suppress FutureWarning to keep the output clearer
+import warnings
+warnings.filterwarnings('ignore', category=FutureWarning)
 
 # import Prophet and train our model!
 from fbprophet import Prophet
